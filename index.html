@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard Analítico Empresarial - Mini Farmacia México. Análisis financiero, estratégico y operativo de microfranquicia farmacéutica">
+    <meta name="keywords" content="Mini Farmacia, análisis financiero, franquicias, farmacia México, dashboard empresarial">
+    <meta name="author" content="Mini Farmacia Analytics">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Dashboard Analítico Empresarial - Mini Farmacia México">
+    <meta property="og:description" content="Análisis completo del modelo de microfranquicia farmacéutica">
+    <meta property="og:image" content="./hero.png">
+    <meta property="og:url" content="./">
+    
+    <title>Dashboard Analítico Empresarial - Mini Farmacia México</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="Mini Farmacia Logo" class="logo-img">
+                <span class="logo-text">Mini Farmacia Analytics</span>
+            </div>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#finanzas" class="nav-link">Finanzas</a>
+                <a href="#mercado" class="nav-link">Mercado</a>
+                <a href="#marketing" class="nav-link">Marketing Digital</a>
+                <a href="#estrategia" class="nav-link">Estrategia</a>
+                <a href="#operaciones" class="nav-link">Operaciones</a>
+            </nav>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <button class="floating-btn" onclick="scrollToReport()">
+            📊 Ver informe completo
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-background">
+            <img src="hero.png" alt="Hero Background" class="hero-img">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+                Dashboard Empresarial Inteligente
+            </h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+                Visualiza tu negocio con precisión y elegancia
+            </p>
+            <button class="hero-btn" onclick="scrollToFinanzas()" data-aos="fade-up" data-aos-delay="600">
+                Explorar análisis
+            </button>
+        </div>
+        
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Análisis Financiero -->
+        <section id="finanzas" class="analysis-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="section-title">📊 Análisis Financiero</h2>
+                <p class="section-description">
+                    Evaluación completa de la estructura financiera, rentabilidad y proyecciones del modelo de microfranquicia
+                </p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Resumen Ejecutivo -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Resumen Ejecutivo Financiero</h3>
+                        <span class="card-status success">Rentable</span>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">$20,000 - $50,000</div>
+                            <div class="metric-label">Inversión Inicial (MXN)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">2-4 meses</div>
+                            <div class="metric-label">Recuperación de Capital</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">15-25%</div>
+                            <div class="metric-label">Margen Neto</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">60-120%</div>
+                            <div class="metric-label">ROI Anual</div>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver análisis detallado
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="financialBarChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Punto de Equilibrio</h4>
+                            <p>Con una inversión promedio de $30,000 MXN, el punto de equilibrio se alcanza con ventas mensuales de $45,000 MXN, requiriendo 8-13 clientes diarios.</p>
+                            
+                            <h4>Estructura de Costos</h4>
+                            <ul>
+                                <li>Resurtido de inventario: $3,000-$5,000/mes</li>
+                                <li>Personal: $3,000-$5,000/mes</li>
+                                <li>Servicios: $500-$1,000/mes</li>
+                                <li>Otros gastos: $700-$1,500/mes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <canvas id="financialPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecciones de Ventas -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Proyecciones de Ventas</h3>
+                        <span class="card-status info">Crecimiento Sostenido</span>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">$35,000</div>
+                            <div class="metric-label">Escenario Conservador (mes)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$50,000</div>
+                            <div class="metric-label">Escenario Base (mes)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$80,000</div>
+                            <div class="metric-label">Escenario Optimista (mes)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$150</div>
+                            <div class="metric-label">Ticket Promedio (MXN)</div>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver proyecciones detalladas
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="salesLineChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Factores Críticos de Éxito</h4>
+                            <ul>
+                                <li><strong>Ubicación estratégica:</strong> Proximidad a clínicas y alta afluencia peatonal</li>
+                                <li><strong>Fidelización de pacientes crónicos:</strong> Generación del 80% de ingresos recurrentes</li>
+                                <li><strong>Gestión eficiente de inventarios:</strong> Evitar caducidades (mermas 2-5%)</li>
+                                <li><strong>Resurtido oportuno:</strong> Stock-outs destruyen la confianza del cliente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Análisis de Mercado -->
+        <section id="mercado" class="analysis-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="section-title">🎯 Análisis de Mercado y Clientes</h2>
+                <p class="section-description">
+                    Estudio del mercado farmacéutico mexicano, segmentación de clientes y oportunidades de crecimiento
+                </p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Tamaño del Mercado -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Mercado Farmacéutico Mexicano</h3>
+                        <span class="card-status success">Crecimiento 6.9% CAGR</span>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">$19.8B USD</div>
+                            <div class="metric-label">Valor 2024</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$38.5B USD</div>
+                            <div class="metric-label">Proyección 2033</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">10%+</div>
+                            <div class="metric-label">Crecimiento Anual 2024-2030</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">25%</div>
+                            <div class="metric-label">Aumento Demanda Adultos Mayores</div>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver análisis de mercado
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="marketGrowthChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Drivers de Crecimiento</h4>
+                            <ul>
+                                <li><strong>Envejecimiento poblacional:</strong> Aumento de enfermedades crónicas</li>
+                                <li><strong>Inversiones extranjeras:</strong> USMCA stimulate market expansion</li>
+                                <li><strong>Nearshoring farmacéutico:</strong> México como hub regional</li>
+                                <li><strong>Expansión sanitaria:</strong> Mejora en infraestructura pública</li>
+                            </ul>
+                            
+                            <h4>Segmentación Objetivo</h4>
+                            <p><strong>Pacientes Crónicos:</strong> Diabetes, hipertensión, enfermedades cardiovasculares con compras recurrentes mensuales y alta sensibilidad al precio.</p>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <canvas id="segmentPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Análisis Competitivo -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Análisis Competitivo</h3>
+                        <span class="card-status warning">Posicionamiento Único</span>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">$20K-50K</div>
+                            <div class="metric-label">Mini Farmacia</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$1M-1.5M</div>
+                            <div class="metric-label">Farmacias Similares</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$4M-9M</div>
+                            <div class="metric-label">Farmacias del Ahorro</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">10-75x</div>
+                            <div class="metric-label">Menor Inversión</div>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver comparativa competitiva
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="competitiveChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Ventaja Competitiva</h4>
+                            <p>Mini Farmacia ocupa un nicho de ultra-bajo costo sin competencia directa equivalente. Su modelo de "exhibidor automontable" democratiza el acceso al emprendimiento farmacéutico.</p>
+                            
+                            <h4>Oportunidades de Diferenciación</h4>
+                            <ul>
+                                <li>Rapidez de instalación (24-48 hrs vs meses)</li>
+                                <li>Formato modular sin necesidad de local propio</li>
+                                <li>Enfoque específico en pacientes crónicos</li>
+                                <li>Marketing digital efectivo para emprendedores jóvenes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketing Digital -->
+        <section id="marketing" class="analysis-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="section-title">📱 Marketing Digital</h2>
+                <p class="section-description">
+                    Estrategia de marketing digital, presencia en redes sociales y efectividad de campañas
+                </p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Presencia Digital -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Estrategia de Marketing Digital</h3>
+                        <span class="card-status success">Presencia Activa</span>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Plataformas Activas</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">20%</div>
+                            <div class="metric-label">Descuento Permanente</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">24-48h</div>
+                            <div class="metric-label">Promesa de Entrega</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">B2B2C</div>
+                            <div class="metric-label">Modelo de Negocio</div>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver estrategia completa
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="marketingFunnelChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Plataformas Activas</h4>
+                            <ul>
+                                <li><strong>Facebook:</strong> @minifarmaciamx - Contenido orgánico y testimonios</li>
+                                <li><strong>TikTok:</strong> Contenido emocional dirigido a emprendedores</li>
+                                <li><strong>YouTube Shorts:</strong> Videos virales "24 horas para recibir tu farmacia"</li>
+                                <li><strong>Website:</strong> E-commerce completo con carrito de compras (Shopify)</li>
+                            </ul>
+                            
+                            <h4>Narrativa Principal</h4>
+                            <ul>
+                                <li>Oportunidad financiera: "Triplica tu inversión"</li>
+                                <li>Facilidad: "Franquicia automontable"</li>
+                                <li>Democratización: "Tu farmacia desde $20 mil pesos"</li>
+                                <li>Urgencia: "Recibe tu Mini Farmacia en 24 horas"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Análisis de Canales -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Efectividad de Canales</h3>
+                        <span class="card-status info">Multi-canal</span>
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">Alto</div>
+                            <div class="metric-label">TikTok/YouTube Shorts</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">Medio</div>
+                            <div class="metric-label">Facebook Orgánico</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">Medio</div>
+                            <div class="metric-label">Website/E-commerce</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">Bajo</div>
+                            <div class="metric-label">Instagram (Ausente)</div>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver análisis de canales
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="channelEffectivenessChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Fortalezas Identificadas</h4>
+                            <ul>
+                                <li>Dominio .mx (señal local para México)</li>
+                                <li>Precio disruptivo destacado en todos los touchpoints</li>
+                                <li>Landing pages específicas por producto (Base/Inter/Turbo)</li>
+                                <li>Short-form video efectivo para viralidad</li>
+                            </ul>
+                            
+                            <h4>Debilidades y Oportunidades</h4>
+                            <ul>
+                                <li><strong>Crítico:</strong> Ausencia en Instagram (oportunidad perdida)</li>
+                                <li><strong>SEO:</strong> Sin blog o contenido educativo</li>
+                                <li><strong>Credibilidad:</strong> Sin testimonios verificables públicos</li>
+                                <li><strong>Regulatorio:</strong> Falta contenido sobre COFEPRIS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Análisis Estratégico -->
+        <section id="estrategia" class="analysis-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="section-title">🎯 Análisis Estratégico</h2>
+                <p class="section-description">
+                    Evaluación FODA, matriz BCG, análisis PESTEL y evaluación de disrupción del modelo de negocio
+                </p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Análisis FODA -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Análisis FODA</h3>
+                        <span class="card-status warning">Fortalezas Dominantes</span>
+                    </div>
+                    
+                    <div class="swot-grid">
+                        <div class="swot-item strengths">
+                            <h4>FORTALEZAS</h4>
+                            <ul>
+                                <li>Barrera de entrada ultra-baja (10-75x menor)</li>
+                                <li>Rapidez de implementación (24-48h)</li>
+                                <li>Formato flexible sin renta adicional</li>
+                                <li>Marketing digital efectivo</li>
+                                <li>Segmentación clara en pacientes crónicos</li>
+                            </ul>
+                        </div>
+                        <div class="swot-item opportunities">
+                            <h4>OPORTUNIDADES</h4>
+                            <ul>
+                                <li>Expansión a zonas rurales</li>
+                                <li>Servicios complementarios (teleconsulta)</li>
+                                <li>Alianzas estratégicas</li>
+                                <li>Digitalización completa B2C</li>
+                                <li>Modelo de suscripción B2C</li>
+                            </ul>
+                        </div>
+                        <div class="swot-item weaknesses">
+                            <h4>DEBILIDADES</h4>
+                            <ul>
+                                <li>Diferenciación limitada vs cadenas</li>
+                                <li>Ambigüedad regulatoria COFEPRIS</li>
+                                <li>Sin responsable sanitario documentado</li>
+                                <li>Capacitación limitada</li>
+                                <li>Sin casos de éxito verificables</li>
+                            </ul>
+                        </div>
+                        <div class="swot-item threats">
+                            <h4>AMENAZAS</h4>
+                            <ul>
+                                <li>Regulatorias (clausuras COFEPRIS)</li>
+                                <li>Reputacionales (dispensación incorrecta)</li>
+                                <li>Competencia de cadenas tradicionales</li>
+                                <li>Imitación del modelo</li>
+                                <li>Macroeconómicas (devaluación, inflación)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver análisis FODA detallado
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="analysis-text">
+                            <h4>Conclusiones del Análisis FODA</h4>
+                            <p>Mini Farmacia presenta fortalezas significativas en términos de accesibilidad y rapidez, pero enfrenta debilidades críticas en diferenciación y cumplimiento regulatorio. Las oportunidades de expansión rural y digitalización son atractivas, mientras que las amenazas regulatorias requieren atención inmediata.</p>
+                            
+                            <h4>Estrategias Recomendadas</h4>
+                            <ul>
+                                <li><strong>FO:</strong> Aprovechar la barrera baja para expansión rural rápida</li>
+                                <li><strong>FA:</strong> Fortalecer diferenciación mediante servicios complementarios</li>
+                                <li><strong>DO:</strong> Usar tecnología para resolver ambigüedades regulatorias</li>
+                                <li><strong>DA:</strong> Auditoría legal urgente antes de expansión masiva</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Matriz BCG -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Matriz BCG</h3>
+                        <span class="card-status info">Portafolio Estratégico</span>
+                    </div>
+                    
+                    <div class="bcg-matrix">
+                        <div class="bcg-quadrant stars">
+                            <h4>⭐ ESTRELLAS</h4>
+                            <p>Modelo de Negocio Mini Farmacia</p>
+                            <small>Crecimiento alto, participación alta</small>
+                        </div>
+                        <div class="bcg-quadrant question-marks">
+                            <h4>❓ INTERROGANTES</h4>
+                            <ul>
+                                <li>Expansión rural</li>
+                                <li>Servicios digitales</li>
+                                <li>Alianzas estratégicas</li>
+                            </ul>
+                        </div>
+                        <div class="bcg-quadrant cash-cows">
+                            <h4>🐄 VACAS LECHERAS</h4>
+                            <p>Resurtidos recurrentes</p>
+                            <small>Crecimiento bajo, participación alta</small>
+                        </div>
+                        <div class="bcg-quadrant dogs">
+                            <h4>🐕 PERROS</h4>
+                            <p>Accesorios de marca</p>
+                            <small>Crecimiento bajo, participación baja</small>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver estrategia de portafolio
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="analysis-text">
+                            <h4>Análisis de Portafolio</h4>
+                            <p>El modelo Mini Farmacia se posiciona como una "Estrella" con alto potencial de crecimiento. Los ingresos por resurtidos representan una "Vaca Lechera" que puede financiar la expansión.</p>
+                            
+                            <h4>Recomendaciones Estratégicas</h4>
+                            <ul>
+                                <li><strong>Invertir agresivamente</strong> en el modelo principal para mantener posición de estrella</li>
+                                <li><strong>Monetizar</strong> los resurtidos recurrentes para generar flujo de efectivo</li>
+                                <li><strong>Evaluar cuidadosamente</strong> las interrogantes antes de invertir recursos significativos</li>
+                                <li><strong>Desinvertir</strong> de productos "perro" que no generen valor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Evaluación de Disrupción -->
+                <div class="analysis-card full-width">
+                    <div class="card-header">
+                        <h3 class="card-title">Evaluación de Disrupción</h3>
+                        <span class="card-status warning">Incremental-Disruptivo</span>
+                    </div>
+                    
+                    <div class="disruption-analysis">
+                        <div class="disruption-pros">
+                            <h4>✅ ELEMENTOS DISRUPTIVOS</h4>
+                            <ul>
+                                <li><strong>Precio:</strong> 10-75x más accesible que alternativas</li>
+                                <li><strong>Simplicidad:</strong> Elimina complejidad operativa</li>
+                                <li><strong>Acceso:</strong> Democratiza emprendimiento farmacéutico</li>
+                                <li><strong>Velocidad:</strong> Implementación drásticamente reducida</li>
+                                <li><strong>Formato:</strong> Exhibidor modular vs local dedicado</li>
+                            </ul>
+                        </div>
+                        <div class="disruption-cons">
+                            <h4>❌ LÍMITES DE LA DISRUPCIÓN</h4>
+                            <ul>
+                                <li><strong>Sin innovación tecnológica:</strong> No hay plataforma digital B2C</li>
+                                <li><strong>Modelo tradicional B2B:</strong> Venta de kits, igual que franquicias</li>
+                                <li><strong>Sin ventaja sostenible:</strong> Fácil de copiar, sin moat</li>
+                                <li><strong>No resuelve problema core:</strong> Pacientes prefieren marcas establecidas</li>
+                                <li><strong>Riesgo regulatorio alto:</strong> Puede ser inviable legalmente</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="conclusion-box">
+                        <h4>🎯 CONCLUSIÓN</h4>
+                        <p>Mini Farmacia es <strong>incremental-disruptivo</strong> (baja barrera de entrada) pero <strong>NO transformacional</strong>. Es "Uber de garaje" vs "Tesla autopilot". Requiere evolución hacia modelos más tecnológicamente avanzados para mantener ventaja competitiva.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operaciones y Logística -->
+        <section id="operaciones" class="analysis-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="section-title">⚙️ Operaciones y Logística</h2>
+                <p class="section-description">
+                    Análisis operativo, requerimientos de talento, estructura de costos y plan de mitigación de riesgos
+                </p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Perfil Operativo -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Perfil del Franquiciado Ideal</h3>
+                        <span class="card-status info">Emprendedor Experiencia</span>
+                    </div>
+                    
+                    <div class="requirements-grid">
+                        <div class="requirement-item">
+                            <h4>✅ PERFIL RECOMENDADO</h4>
+                            <ul>
+                                <li>Experiencia en retail/atención al cliente</li>
+                                <li>Conocimientos básicos de farmacología</li>
+                                <li>Capacidad de gestión de inventarios</li>
+                                <li>Habilidades digitales y marketing local</li>
+                                <li>Red de contactos locales (médicos, clínicas)</li>
+                            </ul>
+                        </div>
+                        <div class="requirement-item">
+                            <h4>❌ NO REQUIERE</h4>
+                            <ul>
+                                <li>Título profesional farmacéutico</li>
+                                <li>Experiencia previa en salud</li>
+                                <li>Capital superior a $50,000 MXN</li>
+                                <li>Local comercial propio</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver requerimientos operativos
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="operationalChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Capacitación Inicial</h4>
+                            <ul>
+                                <li><strong>Duración:</strong> 8-16 horas</li>
+                                <li><strong>Manejo de recetas</strong> y medicamentos Rx</li>
+                                <li><strong>Almacenamiento</strong> y control de temperatura</li>
+                                <li><strong>Uso de sistema POS</strong></li>
+                                <li><strong>Atención al cliente</strong> y venta consultiva</li>
+                                <li><strong>Normatividad COFEPRIS</strong> básica</li>
+                            </ul>
+                            
+                            <h4>SOPs Críticos</h4>
+                            <ul>
+                                <li>Recepción y verificación de productos</li>
+                                <li>Control de cadena de frío</li>
+                                <li>Dispensación de medicamentos con receta</li>
+                                <li>Manejo de devoluciones y caducidades</li>
+                                <li>Seguridad e higiene</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Estructura de Costos -->
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Estructura de Costos Operativos</h3>
+                        <span class="card-status success">Optimizada</span>
+                    </div>
+                    
+                    <div class="costs-table">
+                        <div class="cost-item">
+                            <span class="cost-label">Renta local/espacio</span>
+                            <span class="cost-value">$0 - $5,000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label">Salario personal</span>
+                            <span class="cost-value">$3,000 - $8,000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label">Resurtido inventario</span>
+                            <span class="cost-value">$3,000 - $10,000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label">Servicios (luz, agua, internet)</span>
+                            <span class="cost-value">$500 - $1,500</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label">Marketing local</span>
+                            <span class="cost-value">$500 - $2,000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label">Seguros (RC, inventario)</span>
+                            <span class="cost-value">$200 - $500</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="cost-label">Imprevistos</span>
+                            <span class="cost-value">$500 - $1,000</span>
+                        </div>
+                        <div class="cost-item total">
+                            <span class="cost-label">TOTAL MENSUAL</span>
+                            <span class="cost-value">$7,700 - $28,000</span>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver análisis de costos
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="chart-container">
+                            <canvas id="costsBreakdownChart"></canvas>
+                        </div>
+                        
+                        <div class="analysis-text">
+                            <h4>Optimización de Costos</h4>
+                            <ul>
+                                <li><strong>Ubicación estratégica:</strong> Maximizar flujo peatonal sin pagar renta premium</li>
+                                <li><strong>Gestión eficiente:</strong> Evitar mermas por caducidades (2-5% del inventario)</li>
+                                <li><strong>Automatización:</strong> Sistemas POS integrados para control de inventario</li>
+                                <li><strong>Negociación:</strong> Mejorar términos con proveedores mayoristas</li>
+                            </ul>
+                            
+                            <h4>Métricas de Control</h4>
+                            <ul>
+                                <li>Rotación de inventario: >6 veces/año</li>
+                                <li>Merma máxima: 5% del inventario</li>
+                                <li>Margen bruto mínimo: 25%</li>
+                                <li>Clientes nuevos/mes: >20</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Matriz de Riesgos -->
+                <div class="analysis-card full-width">
+                    <div class="card-header">
+                        <h3 class="card-title">Matriz de Riesgos y Mitigación</h3>
+                        <span class="card-status danger">Crítico - Requiere Acción</span>
+                    </div>
+                    
+                    <div class="risk-matrix">
+                        <div class="risk-item critical">
+                            <div class="risk-header">
+                                <span class="risk-level">🔴 CRÍTICO</span>
+                                <span class="risk-probability">Probabilidad: ALTA</span>
+                            </div>
+                            <h4>Clausura COFEPRIS</h4>
+                            <p>Operación sin licencia sanitaria válida para venta de medicamentos controlados</p>
+                            <div class="mitigation">
+                                <strong>Mitigación:</strong> Auditoría legal urgente, protocolo de cumplimiento obligatorio, evidencia de licencias antes de resurtidos
+                            </div>
+                        </div>
+                        
+                        <div class="risk-item high">
+                            <div class="risk-header">
+                                <span class="risk-level">🟠 ALTO</span>
+                                <span class="risk-probability">Probabilidad: ALTA</span>
+                            </div>
+                            <h4>Desabasto de Inventario</h4>
+                            <p>Problemas en cadena de suministro que afecten disponibilidad de productos</p>
+                            <div class="mitigation">
+                                <strong>Mitigación:</strong> Múltiples proveedores, inventarios mínimos de seguridad, sistema automatizado de reorden
+                            </div>
+                        </div>
+                        
+                        <div class="risk-item medium">
+                            <div class="risk-header">
+                                <span class="risk-level">🟡 MEDIO</span>
+                                <span class="risk-probability">Probabilidad: MEDIA</span>
+                            </div>
+                            <h4>Daño Reputacional</h4>
+                            <p>Casos de dispensación incorrecta o problemas de calidad que afecten la marca</p>
+                            <div class="mitigation">
+                                <strong>Mitigación:</strong> SOPs estrictos, capacitación continua, seguros de responsabilidad civil, trazabilidad completa
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="expand-btn" onclick="toggleCard(this)">
+                        Ver plan de mitigación completo
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    
+                    <div class="card-content" style="display: none;">
+                        <div class="analysis-text">
+                            <h4>Plan de Acción Inmediato</h4>
+                            <div class="action-plan">
+                                <div class="action-item">
+                                    <h5>1. Cumplimiento Regulatorio (Urgente)</h5>
+                                    <ul>
+                                        <li>Contratar abogado especialista en derecho sanitario</li>
+                                        <li>Documentar proceso de obtención de licencia COFEPRIS</li>
+                                        <li>Crear checklist de cumplimiento pre-apertura</li>
+                                        <li>Exigir evidencia de licencia antes del primer resurtido</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="action-item">
+                                    <h5>2. Programa de Calidad (Corto Plazo)</h5>
+                                    <ul>
+                                        <li>SOPs detallados para manejo de medicamentos</li>
+                                        <li>Capacitación obligatoria con certificación</li>
+                                        <li>Sistema de trazabilidad completo</li>
+                                        <li>Auditorías aleatorias de cumplimiento</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="action-item">
+                                    <h5>3. Gestión de Riesgos (Mediano Plazo)</h5>
+                                    <ul>
+                                        <li>Seguro de responsabilidad civil obligatorio</li>
+                                        <li>Plan de crisis y comunicación</li>
+                                        <li>Red de proveedores alternativos</li>
+                                        <li>Fondo de contingencia operativo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reporte Ejecutivo Final -->
+        <section id="reporte" class="report-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="section-title">📋 Reporte Ejecutivo Final</h2>
+                <p class="section-description">
+                    Conclusiones y recomendaciones estratégicas para el modelo Mini Farmacia
+                </p>
+            </div>
+            
+            <div class="executive-summary">
+                <div class="summary-card">
+                    <h3>🎯 Conclusión General</h3>
+                    <p>Mini Farmacia presenta un <strong>modelo de negocio innovador y accesible</strong> con gran potencial de crecimiento en el mercado farmacéutico mexicano. Sin embargo, enfrenta <strong>riesgos regulatorios significativos</strong> que requieren atención inmediata antes de cualquier expansión masiva.</p>
+                </div>
+                
+                <div class="recommendations-grid">
+                    <div class="recommendation">
+                        <h4>🚀 Recomendaciones Inmediatas</h4>
+                        <ul>
+                            <li><strong>Auditoría legal completa</strong> del modelo de exhibidores</li>
+                            <li><strong>Protocolo de cumplimiento COFEPRIS</strong> obligatorio</li>
+                            <li><strong>Pilotos controlados</strong> (10-20 unidades) con métricas estrictas</li>
+                            <li><strong>Programa de certificación</strong> para franquiciados</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation">
+                        <h4>📈 Oportunidades de Crecimiento</h4>
+                        <ul>
+                            <li><strong>Expansión rural</strong> con menor competencia</li>
+                            <li><strong>Digitalización B2C</strong> (app, CRM, programa de lealtad)</li>
+                            <li><strong>Alianzas estratégicas</strong> con laboratorios y consultorios</li>
+                            <li><strong>Modelo de suscripción</strong> para pacientes crónicos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation">
+                        <h4>⚠️ Riesgos a Mitigar</h4>
+                        <ul>
+                            <li><strong>Regulatorio:</strong> Licencias sanitarias y responsable sanitario</li>
+                            <li><strong>Operativo:</strong> Cadena de frío y trazabilidad</li>
+                            <li><strong>Competitivo:</strong> Diferenciación vs cadenas establecidas</li>
+                            <li><strong>Reputacional:</strong> Casos de dispensación incorrecta</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation">
+                        <h4>💡 Visión a Largo Plazo</h4>
+                        <ul>
+                            <li><strong>Dark pharmacies:</strong> Almacenes + app + entrega 30 min</li>
+                            <li><strong>Telemedicina integrada:</strong> Consulta + receta + entrega</li>
+                            <li><strong>Internacionalización:</strong> Centroamérica</li>
+                            <li><strong>Salida estratégica:</strong> Adquisición por cadena farmacéutica</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="final-score">
+                    <h3>📊 Puntuación General del Modelo</h3>
+                    <div class="score-breakdown">
+                        <div class="score-item">
+                            <span class="score-label">Innovación del Modelo</span>
+                            <span class="score-value">8.5/10</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Viabilidad Regulatoria</span>
+                            <span class="score-value">4.0/10</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Potencial de Mercado</span>
+                            <span class="score-value">8.0/10</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Sostenibilidad Financiera</span>
+                            <span class="score-value">7.5/10</span>
+                        </div>
+                        <div class="score-item total">
+                            <span class="score-label">PUNTUACIÓN PROMEDIO</span>
+                            <span class="score-value">7.0/10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Mini Farmacia Analytics</h4>
+                <p>Dashboard analítico empresarial para evaluación estratégica del modelo de microfranquicia farmacéutica</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Análisis</h4>
+                <ul>
+                    <li><a href="#finanzas">Financiero</a></li>
+                    <li><a href="#mercado">Mercado</a></li>
+                    <li><a href="#marketing">Marketing</a></li>
+                    <li><a href="#estrategia">Estrategia</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>Email: analytics@minifarmacia.mx</li>
+                    <li>WhatsApp: +52 56 6252 8692</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mini Farmacia Analytics. Análisis basado en investigación pública y mercado farmacéutico mexicano.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
