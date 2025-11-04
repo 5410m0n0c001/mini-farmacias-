@@ -168,7 +168,7 @@ a:hover {
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: var(--accent-blue);
   font-weight: 500;
   font-size: var(--font-size-sm);
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -178,8 +178,9 @@ a:hover {
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
-  background: rgba(0, 122, 255, 0.08);
+  color: var(--accent-blue-light);
+  background: rgba(0, 122, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 .nav-toggle {
@@ -1055,6 +1056,39 @@ a:hover {
 
 .score-item.total .score-value {
   font-size: var(--font-size-xl);
+}
+
+/* ========================================
+   DISCLAIMER SECTION
+   ======================================== */
+
+.disclaimer-section {
+  margin-top: var(--spacing-3xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.disclaimer-card {
+  padding: var(--spacing-xl);
+  background: var(--secondary-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 149, 0, 0.2);
+  border-left: 4px solid var(--warning);
+}
+
+.disclaimer-card h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--warning);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.disclaimer-card p {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 /* ========================================
